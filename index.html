@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Player</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    .floating-message {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 0.8);
+      color: white;
+      padding: 15px 25px;
+      border-radius: 10px;
+      font-family: 'Arial', sans-serif;
+      font-size: 16px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      z-index: 1000;
+      max-width: 90%;
+    }
+
+    @media (max-width: 600px) {
+      .floating-message {
+        font-size: 14px;
+        padding: 10px 20px;
+        top: 10px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .floating-message {
+        font-size: 12px;
+        padding: 8px 15px;
+        top: 5px;
+      }
+    }
+
+    .floating-message.hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-message" id="floatingMessage">
+    Mi idea era hacer una aplicación y lo tuvieras descargada en tu celular (siendo algo especial de mi parte por tu día), pero por motivos de salud y estudios, no logré terminarla :((
+  </div>
+
+  <div class="container">
+    <div class="player">
+      <div class="player__controls">
+        <div class="player__btn player__btn--small" id="previous">
+          <i class="fas fa-arrow-left"></i>
+        </div>
+        <h5 class="player__title">Playing now</h5>
+        <div class="player__btn player__btn--small" id="icon-menu">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+      <div class="player__album">
+        <img src="img/306e8d7f8c7c4aa3bf106145aad80fa2.jpeg" alt="Album Cover" class="player__img" loading="lazy" />
+      </div>
+
+      <h2 class="player__artist">Playlist de Choi Choi</h2>
+      <h3 class="player__song">Yeicho 🥹 y Foxy Shy 🤧</h3>
+
+      <input type="range" value="20" min="0" class="player__level" id="range" />
+      <div class="audio-duration">
+        <div class="start">00:01</div>
+        <div class="end">04:30</div>
+      </div>
+
+      <audio class="player__audio" controls id="audio">
+        <source id="audioSource" src="musica/ONCE BEGINS, TWICE BEGINS ONE IN A MILLION (1).mp3" type="audio/mpeg" />
+      </audio>
+
+      <div class="player__controls">
+        <div class="player__btn player__btn--medium" id="backward">
+          <i class="fas fa-backward"></i>
+        </div>
+
+        <div class="player__btn player__btn--medium blue play" id="play">
+          <i class="fas fa-play play-btn"></i>
+          <i class="fas fa-pause pause-btn hide"></i>
+        </div>
+
+        <div class="player__btn player__btn--medium" id="forward">
+          <i class="fas fa-forward"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Ocultar el mensaje flotante después de 10 segundos
+    setTimeout(() => {
+      document.getElementById('floatingMessage').classList.add('hidden');
+    }, 10000);
+  </script>
+</body>
+</html>
